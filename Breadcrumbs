@@ -1,0 +1,24 @@
+"use client";
+
+import { ChevronRight } from "lucide-react";
+
+export default function Breadcrumbs({ items }) {
+  return (
+    <div className="bg-white px-6 py-3 overflow-x-auto">
+      <div className="max-w-7xl mx-auto flex items-center space-x-2 text-sm text-gray-600 whitespace-nowrap flex-nowrap">
+        {items.map((item, index) => (
+          <div key={index} className="flex items-center space-x-2">
+            {index !== 0 && <ChevronRight className="w-4 h-4 shrink-0" />}
+            {item.href ? (
+              <a href={item.href} className="text-orange-500 hover:underline">
+                {item.title}
+              </a>
+            ) : (
+              <span className="text-gray-700">{item.title}</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
